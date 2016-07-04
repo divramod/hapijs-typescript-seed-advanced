@@ -27,4 +27,4 @@ Running on port 3000 ex: localhost:3000/documentation
 * src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: )
 
 # ToDo's
-[] create a npm module to help with the How To's
+- [] create a npm module to help with the How To's
