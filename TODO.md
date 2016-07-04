@@ -1,14 +1,15 @@
-NA: Kegelapp API
+MISC
 ===============================================================================
-- [ ] hapi: use payload, query, id
-- [ ] hapi: add cookie
-- [ ] hapi: http://mph-web.de/build-a-restful-api-using-hapi-js-and-mongodb/
-- [ ] hapi: http://mph-web.de/social-signup-with-twitter-using-hapi-js/
-- [ ] hapi: http://mph-web.de/version-your-api-with-hapi-js/```
+- install mongodb on raspberry: http://andyfelong.com/2016/01/mongodb-3-0-9-binaries-for-raspberry-pi-2-jessie/
 
-Done
--------------------------------------------------------------------------------
-- [x] register route 2016.04.01
-- [x] get mongodb running 2016.04.01
-- [x] hapi add good and good-console
-- [x] hapi boom lib
+DOORS
+===============================================================================
+x create three doors
+- add watcher for every door
+- write to mongodb when button is pressed
+- test if data are correctly curlable
+
+LOCATION
+===============================================================================
+- add entity
+- hardware: test button

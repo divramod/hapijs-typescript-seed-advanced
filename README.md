@@ -1,46 +1,24 @@
-COMMANDS
-===============================================================================
-```bash
-cd scripts
-nodemon runners/login.js
-```
+# typescript-node
 
-Inspired By
-===============================================================================
-- https://github.com/dwyl/hapi-typescript-example
-- https://github.com/poeticninja/hapi-authentication-and-authorization
-- https://medium.com/@poeticninja/authentication-and-authorization-with-hapi-5529b5ecc8ec#.qw0gjv67l
-- mongo: 
+[![Build Status](https://travis-ci.org/dwyl/hapi-typescript-example.svg?branch=master)](https://travis-ci.org/dwyl/hapi-typescript-example)
 
-Test with
-===============================================================================
+This is a very simple template project for node and typescript projects.
 
-```bash
-# success
-http POST localhost:8101/login email=admin@admin.com password=admin --session=user1
+**Installation**
 
-# success because session is saved
-http localhost:8101:/example-two --session=user1
+* *npm install* (Install node packages)
+* *typings install* (Install typings)
 
-# error because no user session exists
-http localhost:8101:/example-two --session=user2
-```
-Helper
-===============================================================================
-- https://github.com/jkbrzt/httpie
-- https://github.com/mafintosh/mongojs
-- JOI: https://github.com/hapijs/joi/blob/v8.0.5/API.md
+**Run**
 
-Routes
-===============================================================================
+* *gulp build* (Build TS files)
+* *gulp test* (Run mocha tests)
+* *gulp tslint* (Run tslint)
+* *gulp nodemon* (Run nodemon and watch ts files)
 
-```bash
-# register
-http POST localhost:8101/register email=admin@admin.com forename=admin surename=admin password=pw
 
-# login
-http POST localhost:8101/login email=admin@admin.com password=pw
+Running on port 3000 ex: localhost:3000/documentation
 
-# logout
-http localhost:8101/logout
-```
+
+Have fun :)
+
