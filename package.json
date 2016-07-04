@@ -17,6 +17,9 @@
     "test": "gulp test",
     "start": "gulp nodemon",
     "build": "gulp build",
+    "git.merge": "git fetch upstream && git merge upstream/master",
+    "git.merge.preview": "git fetch upstream && git merge --no-commit upstream/master",
+    "git.setup": "git init && git remote add upstream https://github.com/divramod/hapi-seed-advanced.git",
     "tslint": "gulp tslint",
     "postinstall": "npm run typings-install",
     "typings-install": "typings install"
