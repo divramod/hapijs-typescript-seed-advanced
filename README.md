@@ -25,3 +25,6 @@ Running on port 3000 ex: localhost:3000/documentation
 * src/controllers/ENTITIYNAME.ts --> add controller (shortcut: )
 * src/libs/repository/interfaces.ts --> add entity interface (shortcut: )
 * src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: )
+
+# ToDo's
+[] create a npm module to help with the How To's
