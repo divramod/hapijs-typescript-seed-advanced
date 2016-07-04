@@ -10,7 +10,6 @@ const path = require('path');
 var port = process.env.port || Configurations.Server.port;
 var server = new Hapi.Server();
 
-
 server.connection({ port: port });
 
 //  Setup Hapi Plugins

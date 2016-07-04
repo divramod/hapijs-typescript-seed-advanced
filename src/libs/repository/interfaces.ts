@@ -1,4 +1,4 @@
-
+// ========================== [ meta ] ==========================
 export interface IEntity {
     _id: string;
     createdDate: Date;
@@ -21,20 +21,8 @@ export interface ITask extends IEntity {
 }
 
 
-export interface IDoor extends IEntity {
-    name: string;
-    description: string;
-    completed: boolean;
-    opened: boolean;
-}
-
-
 // ========================== [ Interfaces ] ==========================
 
 export interface ITaskRepository extends IRepository<ITask> {
-
-}
-
-export interface IDoorRepository extends IRepository<ITask> {
 
 }
