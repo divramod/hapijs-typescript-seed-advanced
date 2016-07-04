@@ -1,0 +1,32 @@
+{
+  "name": "hapi-authentication-and-authorization",
+  "description": "Example using hapi for auth",
+  "version": "0.0.1",
+  "author": "Saul Maddox",
+  "private": false,
+  "main": "server.js",
+  "engines": {
+    "node": "v5.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.25",
+    "boom": "~2.7.1",
+    "colors": "^1.1.2",
+    "good": "~6.1.2",
+    "good-console": "~5.0.0",
+    "hapi": "~8.6.1",
+    "hapi-auth-cookie": "~2.2.0",
+    "hapi-auth-jwt2": "^5.8.0",
+    "joi": "~7.0.0",
+    "jsonwebtoken": "^5.7.0",
+    "mongojs": "^2.3.0",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "mongodb": "^2.1.16"
+  }
+}
