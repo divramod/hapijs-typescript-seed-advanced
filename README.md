@@ -52,3 +52,4 @@ git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 # ToDo's
 - [ ] create a npm module to help with the How To's
 - [ ] docs: add a section where i describe how to use it in your own project
+- [ ]
