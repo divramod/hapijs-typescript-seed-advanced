@@ -3,7 +3,12 @@
 This is a simple hapijs (nodejs) starter template that should be used as an api.
 It is inspired by [dwyl/hapi-typescript-example](https://github.com/dwyl/hapi-typescript-example/tree/master/src).
 
+# Table of Contents
+
+- [Contributing](#contributing)
+
 # Features
+- TODO
 
 # Installation
 
@@ -22,6 +27,17 @@ npm run tslint # (Run tslint)
 Running on port 3000 ex: localhost:3000/documentation
 
 # How To's
+
+## Merging latest upstream changes
+
+1. `npm run merge.preview` - This will fetch `upstream` and show you how the merge would look
+2. `npm run merge` - This will actually do the merge
+3. Handle any conflicts to get latest upstream into your application.
+4. Continue building your app.
+
+You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
+
+If you have any suggestions to this workflow, please post [here](https://github.com/divramod/hapi-seed-advanced/issues).
 
 ## how to use in your project
 There are at least two ways to integrate the api in your project. As a submodule to an existing project or as standalone project.
@@ -50,6 +66,10 @@ git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 * src/controllers/ENTITIYNAME.ts --> add controller (shortcut: )
 * src/libs/repository/interfaces.ts --> add entity interface (shortcut: )
 * src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: )
+
+# Contributing
+
+Please see the [CONTRIBUTING](https://github.com/NathanWalker/hapi-seed-advanced/blob/master/CONTRIBUTING.md) file for guidelines.
 
 # ToDo's
 - [ ] create a npm module to help with the How To's
