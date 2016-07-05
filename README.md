@@ -74,11 +74,11 @@ git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 ```
 
 ## add a new entity
-* src/routes/index.ts --> add routes (shortcut: )
-* src/models/ENTIYNAME.ts --> add model (shortcut: )
-* src/controllers/ENTITIYNAME.ts --> add controller (shortcut: )
-* src/libs/repository/interfaces.ts --> add entity interface (shortcut: )
-* src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: )
+* src/routes/index.ts --> add routes (shortcut: TODO)
+* src/models/ENTIYNAME.ts --> add model (shortcut: TODO)
+* src/controllers/ENTITIYNAME.ts --> add controller (shortcut: TODO)
+* src/libs/repository/interfaces.ts --> add entity interface (shortcut: TODO)
+* src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: TODO)
 
 ## add a new test
 * test/YOUR_FEATURE_NAMETests.ts
