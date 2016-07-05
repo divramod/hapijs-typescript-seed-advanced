@@ -12,10 +12,12 @@ It is inspired by [dwyl/hapi-typescript-example](https://github.com/dwyl/hapi-ty
 
 # Run
 
-* ```gulp build``` (Build TS files)
-* ```gulp test``` (Run mocha tests)
-* ```gulp tslint``` (Run tslint)
-* ```gulp nodemon``` (Run nodemon and watch ts files)
+```
+npm start # (Run nodemon and watch ts files)
+npm run build # (Build TS files)
+npm run test # (Run mocha tests)
+npm run tslint # (Run tslint)
+```
 
 Running on port 3000 ex: localhost:3000/documentation
 
