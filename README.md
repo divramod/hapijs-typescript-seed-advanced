@@ -10,6 +10,9 @@ It is inspired by [dwyl/hapi-typescript-example](https://github.com/dwyl/hapi-ty
 # Features
 - TODO
 
+# Prerequsits
+- TODO
+
 # Installation
 
 * ```npm install``` (Install node packages)
@@ -39,10 +42,10 @@ You can read more about [syncing a fork here](https://help.github.com/articles/s
 
 If you have any suggestions to this workflow, please post [here](https://github.com/divramod/hapi-seed-advanced/issues).
 
-## how to use in your project
+## How to use in your project
 There are at least two ways to integrate the api in your project. As a submodule to an existing project or as standalone project.
 
-### add as a submodule to an existing project
+### Add as a submodule to an existing project
 1. create a repository for your api-server (for example server-api)
 2. add that repository as a submodule to your project
 ```
@@ -55,10 +58,20 @@ git submodule add https://github.com/YOUR_GITHUB_NAME/server-api.git
 ```
 git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 ```
+6. install dependencies
+```
+npm install
+typings install
+```
 
-
-### create as standalone project
-* create a repository for your api-server
+### Create as standalone project
+1. create a repository for your api-server
+2. download the hapi-seed-advanced zip (do not clone it)
+3. extract the zip-content into your submodule (server-api)
+4. add upstream
+```
+git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
+```
 
 ## add a new entity
 * src/routes/index.ts --> add routes (shortcut: )
@@ -66,6 +79,10 @@ git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 * src/controllers/ENTITIYNAME.ts --> add controller (shortcut: )
 * src/libs/repository/interfaces.ts --> add entity interface (shortcut: )
 * src/libs/repository/mongo/ENTITYNAMERepostory.ts --> add repository (shortcut: )
+
+## add a new test
+* test/YOUR_FEATURE_NAMETests.ts
+* run ```npm test```
 
 # Contributing
 
