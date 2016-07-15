@@ -2,40 +2,40 @@ import * as Hapi from "hapi";
 import * as Boom from "boom";
 import * as Joi from "joi";
 import BaseController from './baseController';
-import * as TaskModel from '../models/taskModel';
-import { ITask, ITaskRepository } from '../libs/repository/interfaces'
+import * as UserModel from '../models/userModel';
+import { IUser, IUserRepository } from '../libs/repository/interfaces'
 
-export default class taskController extends BaseController {
-  private taskRepository: ITaskRepository;
+export default class userController extends BaseController {
+  private userRepository: IUserRepository;
 
-  constructor(server: Hapi.Server, taskRepository: ITaskRepository) {
+  constructor(server: Hapi.Server, userRepository: IUserRepository) {
     super(server);
-    this.taskRepository = taskRepository;
+    this.userRepository = userRepository;
   }
 
-  public createTask(): Hapi.IRouteAdditionalConfigurationOptions {
+  public createUser(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-        var newTask: ITask = request.payload;
-        console.log(newTask);
+        var newUser: IUser = request.payload;
+        console.log(newUser);
 
-        this.taskRepository.create(newTask).then((task) => {
-          reply(task).code(201);
+        this.userRepository.create(newUser).then((user) => {
+          reply(user).code(201);
         }).catch((error) => {
           reply(Boom.badImplementation(error));
         });
       },
-      tags: ['api', 'tasks'],
-      description: 'Create a task.',
+      tags: ['api', 'users'],
+      description: 'Create a user.',
       validate: {
-        payload: TaskModel.createTaskModel
+        payload: UserModel.createUserModel
       },
       plugins: {
         'hapi-swagger': {
           responses: {
             '201': {
-              'description': 'Created Task.',
-              'schema': TaskModel.taskModel
+              'description': 'Created User.',
+              'schema': UserModel.userModel
             }
           }
         }
@@ -43,21 +43,21 @@ export default class taskController extends BaseController {
     }
   }
 
-  public updateTask(): Hapi.IRouteAdditionalConfigurationOptions {
+  public updateUser(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
         const id = request.params["id"]
 
-        this.taskRepository.findById(id).then((task: ITask) => {
-          if (task) {
-            var updateTask: ITask = request.payload;
+        this.userRepository.findById(id).then((user: IUser) => {
+          if (user) {
+            var updateUser: IUser = request.payload;
 
-            task.completed = updateTask.completed;
-            task.description = updateTask.description;
-            task.name = updateTask.name;
+            user.completed = updateUser.completed;
+            user.description = updateUser.description;
+            user.name = updateUser.name;
 
-            this.taskRepository.findByIdAndUpdate(id, task).then((updatedTask: ITask) => {
-              reply(updatedTask);
+            this.userRepository.findByIdAndUpdate(id, user).then((updatedUser: IUser) => {
+              reply(updatedUser);
             }).catch((error) => {
               reply(Boom.badImplementation(error));
             });
@@ -68,23 +68,23 @@ export default class taskController extends BaseController {
           reply(Boom.badImplementation(error));
         });
       },
-      tags: ['api', 'tasks'],
-      description: 'Update task by id.',
+      tags: ['api', 'users'],
+      description: 'Update user by id.',
       validate: {
         params: {
           id: Joi.string().required()
         },
-        payload: TaskModel.updateTaskModel
+        payload: UserModel.updateUserModel
       },
       plugins: {
         'hapi-swagger': {
           responses: {
             '200': {
-              'description': 'Deleted Task.',
-              'schema': TaskModel.taskModel
+              'description': 'Deleted User.',
+              'schema': UserModel.userModel
             },
             '404': {
-              'description': 'Task does not exists.'
+              'description': 'User does not exists.'
             }
           }
         }
@@ -92,15 +92,15 @@ export default class taskController extends BaseController {
     };
   }
 
-  public deleteTask(): Hapi.IRouteAdditionalConfigurationOptions {
+  public deleteUser(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
         const id = request.params["id"]
 
-        this.taskRepository.findById(id).then((task: ITask) => {
-          if (task) {
-            this.taskRepository.findByIdAndDelete(id).then(() => {
-              reply(task);
+        this.userRepository.findById(id).then((user: IUser) => {
+          if (user) {
+            this.userRepository.findByIdAndDelete(id).then(() => {
+              reply(user);
             }).catch((error) => {
               reply(Boom.badImplementation(error));
             });
@@ -111,25 +111,25 @@ export default class taskController extends BaseController {
           reply(Boom.badImplementation(error));
         });
       },
-      tags: ['api', 'tasks'],
-      description: 'Delete task by id.',
+      tags: ['api', 'users'],
+      description: 'Delete user by id.',
       validate: {
         params: {
           id: Joi.string().required()
         }
       },
       response: {
-        schema: TaskModel.taskModel
+        schema: UserModel.userModel
       },
       plugins: {
         'hapi-swagger': {
           responses: {
             '200': {
-              'description': 'Deleted Task.',
-              'schema': TaskModel.taskModel
+              'description': 'Deleted User.',
+              'schema': UserModel.userModel
             },
             '404': {
-              'description': 'Task does not exists.'
+              'description': 'User does not exists.'
             }
           }
         }
@@ -137,14 +137,14 @@ export default class taskController extends BaseController {
     };
   }
 
-  public getTaskById(): Hapi.IRouteAdditionalConfigurationOptions {
+  public getUserById(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
         const id = request.params["id"]
         console.log(id);
-        this.taskRepository.findById(id).then((task: ITask) => {
-          if (task) {
-            reply(task);
+        this.userRepository.findById(id).then((user: IUser) => {
+          if (user) {
+            reply(user);
           } else {
             reply(Boom.notFound());
           }
@@ -152,24 +152,24 @@ export default class taskController extends BaseController {
           reply(Boom.badImplementation(error));
         });
       },
-      tags: ['api', 'tasks'],
-      description: 'Get task by id.',
+      tags: ['api', 'users'],
+      description: 'Get user by id.',
       validate: {
         params: {
           id: Joi.string().required()
         }
       },
       response: {
-        schema: TaskModel.taskModel
+        schema: UserModel.userModel
       },
       plugins: {
         'hapi-swagger': {
           responses: {
             '200': {
-              'description': 'Task founded.'
+              'description': 'User founded.'
             },
             '404': {
-              'description': 'Task does not exists.'
+              'description': 'User does not exists.'
             }
           }
         }
@@ -177,20 +177,20 @@ export default class taskController extends BaseController {
     }
   }
 
-  public getTasks(): Hapi.IRouteAdditionalConfigurationOptions {
+  public getUsers(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
         var top = request.query.top;
         var skip = request.query.skip;
 
-        this.taskRepository.find({}, top, skip).then((tasks: Array<ITask>) => {
-          reply(tasks);
+        this.userRepository.find({}, top, skip).then((users: Array<IUser>) => {
+          reply(users);
         }).catch((error) => {
           reply(Boom.badImplementation(error));
         });
       },
-      tags: ['api', 'tasks'],
-      description: 'Get all tasks.',
+      tags: ['api', 'users'],
+      description: 'Get all users.',
       validate: {
         query: {
           top: Joi.number().default(5),
@@ -201,8 +201,8 @@ export default class taskController extends BaseController {
         'hapi-swagger': {
           responses: {
             '200': {
-              'description': 'Returned Tasks.',
-              'schema': TaskModel.taskModel
+              'description': 'Returned Users',
+              'schema': UserModel.userModel
             }
           }
         }

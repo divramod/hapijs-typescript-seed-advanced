@@ -13,16 +13,26 @@ export interface IRepository<T extends IEntity> {
     create(entity: T): Promise<T>; 
 }
 
-// ========================== [ Entities ] ==========================
+// ========================== [ task ] ==========================
+
 export interface ITask extends IEntity {
     name: string;
     description: string;
     completed: boolean;
 }
 
-
-// ========================== [ Interfaces ] ==========================
-
 export interface ITaskRepository extends IRepository<ITask> {
+
+}
+
+// ========================== [ user ] ==========================
+
+export interface IUser extends IEntity {
+  name: string;
+  description: string;
+  completed: boolean;
+}
+
+export interface IUserRepository extends IRepository<IUser> {
 
 }

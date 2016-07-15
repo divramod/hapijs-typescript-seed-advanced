@@ -11,5 +11,4 @@ class TaskRepository extends MongoRepository<ITask>  {
      }
 }
 
-
 export default TaskRepository;
