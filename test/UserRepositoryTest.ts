@@ -12,9 +12,10 @@ describe("UserRepository", function() {
 
     var user: IUser = {
       _id: undefined,
-      name: "user",
-      description: "teste",
-      completed: false,
+      username: "user",
+      name: "teste",
+      forename: "teste",
+      email: "user",
       createdDate: undefined,
       updatedAt: undefined
     };

@@ -52,9 +52,10 @@ export default class userController extends BaseController {
           if (user) {
             var updateUser: IUser = request.payload;
 
-            user.completed = updateUser.completed;
-            user.description = updateUser.description;
+            user.username = updateUser.username;
             user.name = updateUser.name;
+            user.forename = updateUser.forename;
+            user.email = updateUser.email;
 
             this.userRepository.findByIdAndUpdate(id, user).then((updatedUser: IUser) => {
               reply(updatedUser);

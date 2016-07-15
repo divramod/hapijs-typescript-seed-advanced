@@ -28,9 +28,10 @@ export interface ITaskRepository extends IRepository<ITask> {
 // ========================== [ user ] ==========================
 
 export interface IUser extends IEntity {
+  username: string;
   name: string;
-  description: string;
-  completed: boolean;
+  forename: string;
+  email: string;
 }
 
 export interface IUserRepository extends IRepository<IUser> {
