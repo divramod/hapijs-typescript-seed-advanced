@@ -81,10 +81,10 @@ gulp.task('test-change', [], () => {
  */
 gulp.task('test', [], () => {
   return gulp.src(['build/test/**/*.js'], { read: false })
-    .pipe(mocha({ reporter: 'list' }))
-    .once('error', () => {
-      process.exit(1);
-    });
+    .pipe(mocha({ reporter: 'list' }));
+    //.once('error', () => {
+      //process.exit(1);
+    //});
 })
 
 gulp.task('nodemon', ['compile'], () => {

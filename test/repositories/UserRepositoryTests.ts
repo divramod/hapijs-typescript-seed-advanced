@@ -1,7 +1,7 @@
-/// <reference path="../typings/index.d.ts" />
+/// <reference path="../../typings/index.d.ts" />
 import * as chai from "chai";
-import UserRepository from "../src/libs/repository/mongo/userRepository";
-import {IUser} from "../src/libs/repository/interfaces";
+import UserRepository from "../../src/libs/repository/mongo/userRepository";
+import {IUser} from "../../src/libs/repository/interfaces";
 
 let assert = chai.assert;
 

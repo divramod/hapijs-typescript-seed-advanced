@@ -1,11 +1,10 @@
-/// <reference path="../typings/index.d.ts" />
-
+/// <reference path="../../typings/index.d.ts" />
 
 import * as chai from "chai";
-import TaskRepository from "../src/libs/repository/mongo/taskRepository";
-import {ITask} from "../src/libs/repository/interfaces";
-
 let assert = chai.assert;
+
+import TaskRepository from "../../src/libs/repository/mongo/taskRepository";
+import {ITask} from "../../src/libs/repository/interfaces";
 
 describe("TaskRepository", function() {
   it("Create a task", function(done) {
