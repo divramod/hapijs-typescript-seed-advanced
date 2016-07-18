@@ -10,6 +10,8 @@ let watch = require('gulp-watch')
 var mocha = require('gulp-mocha')
 var istanbul = require('gulp-istanbul')
 var runSequence = require('run-sequence');
+var server  = require( 'gulp-develop-server' );
+var shell = require('shelljs');
 
 // /*  Variables */
 let tsProject = tsc.createProject('tsconfig.json')
@@ -30,8 +32,8 @@ gulp.task('clean', function() {
  */
 gulp.task('tslint', () => {
   return gulp.src(sourceFiles)
-  .pipe(tslint())
-  .pipe(tslint.report('verbose'))
+    .pipe(tslint())
+    .pipe(tslint.report('verbose'))
 })
 
 /**
@@ -39,47 +41,56 @@ gulp.task('tslint', () => {
  */
 gulp.task('compile', ['clean'], () => {
   let tsResult = gulp.src([sourceFiles, testFiles])
-  .pipe(sourcemaps.init())
-  .pipe(tsc(tsProject))
+    .pipe(sourcemaps.init())
+    .pipe(tsc(tsProject))
+
   return tsResult.js
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(outDir))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(outDir))
 })
 
-/**
- * Watch for changes in TypeScript, HTML and CSS files.
- */
-gulp.task('watch', function() {
-  runSequence('test')
-  watch([sourceFiles, testFiles, 'gulpfile.js'], function(e) {
-    runSequence('compile', 'test')
+
+// =========== [ TEST ] ===========
+gulp.task('test-watch', [], () => {
+  process.on('SIGINT', function() {
+      console.log("Caught interrupt signal");
+      if (i_should_exit)
+          process.exit();
+  });
+  runSequence('compile', 'test')
+  gulp.watch([sourceFiles, testFiles, 'gulpfile.js'], function(e) {
+    runSequence(
+      'compile',
+      'test',
+      'test-change'
+    )
   })
 })
 
-/**
- * Build the project.
+/*
+ * dirty hack that was needed because nodemon watch target interferes with
+ * gulp.watch
  */
-gulp.task('build', ['compile'], () => {
-  console.log('Building the project ...')
+gulp.task('test-change', [], () => {
+  var foo = shell.ShellString('hello world');
+  foo.toEnd('change.js');
 })
 
 /**
  * Watch for changes in build/test/**
  */
 gulp.task('test', [], () => {
-  gulp.src(['build/test/**/*.js'], { read: false })
-  .pipe(mocha({ reporter: 'list' }));
-  //.once('error', () => {
-    //process.exit(1);
-  //})
-  //.once('end', () => {
-    //process.exit();
-  //});
+  return gulp.src(['build/test/**/*.js'], { read: false })
+    .pipe(mocha({ reporter: 'list' }))
+    .once('error', () => {
+      process.exit(1);
+    });
 })
 
-gulp.task('nodemon', [], () => {
+gulp.task('nodemon', ['compile'], () => {
   nodemon({
     script: entryPoint,
-    env: { 'NODE_ENV': 'development' }
+    env: { 'NODE_ENV': 'development' },
+    delay: 1000
   })
 })

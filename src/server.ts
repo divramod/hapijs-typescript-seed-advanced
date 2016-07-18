@@ -6,7 +6,6 @@ import Routes from "./routes";
 const fs = require('fs');
 const path = require('path');
 
-
 var port = process.env.port || Configurations.Server.port;
 var server = new Hapi.Server();
 
@@ -26,6 +25,5 @@ plugins.forEach((pluginName: string) => {
 Routes(server);
 
 server.start(function() {
-    console.log('Server running at:', server.info.uri);
+  console.log('Server running at:', server.info.uri);
 });
-
