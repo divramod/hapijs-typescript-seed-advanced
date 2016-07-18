@@ -21,15 +21,24 @@ It is inspired by [dwyl/hapi-typescript-example](https://github.com/dwyl/hapi-ty
 # Run
 
 ```
-# Testing
-env=testing port=8201 npm test
+# Start Testing with livereload on file change
+env=testing db=testing port=8201 npm test # port change is needed to throw out all the loggings
 
-# Run Production Server (default port 8100)
+# Run Production Server (default port 8100) with livereload on file change
 port=8200 npm start # changes default port to 8200
 
 # Typescript Lint
 npm run tslint
 ```
+
+# Testing
+Uses the (chai-assert testing library)[http://chaijs.com/api/assert/].
+
+## Route Testing
+Is inspired by the method https://github.com/hapijs/discuss/issues/214 describes.
+
+## Database/Repository Testing
+When you start ```npm test``` with the environment variable ```db=testing``` the test server will create a mongodb with location testingdb.
 
 # Documentation
 The Documentation is Running on port 8100 by default settings.
@@ -90,9 +99,6 @@ git remote add upstream https://github.com/divramod/hapi-seed-advanced.git
 * test/YOUR_FEATURE_NAMETests.ts
 * run ```npm test```
 
-# Testing
-- https://github.com/hapijs/discuss/issues/214
-
 # Contributing
 
 Please see the [CONTRIBUTING](https://github.com/NathanWalker/hapi-seed-advanced/blob/master/CONTRIBUTING.md) file for guidelines.
@@ -101,3 +107,4 @@ Please see the [CONTRIBUTING](https://github.com/NathanWalker/hapi-seed-advanced
 - [ ] create a npm module to help with the How To's
 - [ ] docs: add a section where i describe how to use it in your own project
 - [ ]
+

@@ -1,3 +1,4 @@
+/// <reference path="../../typings.d.ts" />
 import * as Hapi from "hapi";
 import * as Boom from "boom";
 import * as Joi from "joi";
@@ -11,6 +12,16 @@ export default class userController extends BaseController {
   constructor(server: Hapi.Server, userRepository: IUserRepository) {
     super(server);
     this.userRepository = userRepository;
+  }
+
+  public authenticate(user) {
+
+    var p1 = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        resolve(1)
+      }, Math.random() * 2 + 1);
+    });
+    return p1;
   }
 
   public createUser(): Hapi.IRouteAdditionalConfigurationOptions {

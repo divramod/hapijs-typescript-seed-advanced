@@ -3,27 +3,17 @@ import * as chai from "chai";
 
 import server from "../../src/server";
 
+import UserRepository from "../../src/libs/repository/mongo/userRepository";
 import UserController from '../../src/controllers/userController';
-import UserRepository from '../../src/libs/repository/mongo/userRepository';
 import {IUser} from "../../src/libs/repository/interfaces";
 
 let assert = chai.assert;
 
-describe("UserRepository", function() {
+describe("UserController", function() {
 
-  it("Authenticate a User", function(done) {
+  it("authenticate()", function(done) {
     const userController = new UserController(server, new UserRepository());
-    userController.authenticate().then((user) => {
-      console.log(user);
-      done();
-    }).catch((error) => {
-      console.log(error);
-      done(error);
-    });
-  });
-
-  it("Create a user", function(done) {
-    var repo = new UserRepository();
+    const userRepository = new UserRepository();
 
     var user: IUser = {
       _id: undefined,
@@ -35,12 +25,15 @@ describe("UserRepository", function() {
       updatedAt: undefined
     };
 
-    repo.create(user).then((createdUser) => {
-      assert.isNotNull(user._id);
-      assert.isNotNull(user.createdDate);
+    userRepository.create(user).then((createdUser) => {
+      return userController.authenticate(createdUser);
+    }).then((authenticatedUser) => {
+      assert.isTrue(false, 'is not true');
       done();
     }).catch((error) => {
+      console.log(error);
       done(error);
     });
   });
+
 });

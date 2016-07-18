@@ -1,3 +1,4 @@
+/// <reference path="../../../../typings.d.ts" />
 import * as MongoDb from 'mongodb'
 import {IEntity, IRepository} from "../interfaces"
 const UUID = require("node-uuid");
