@@ -1,3 +1,5 @@
+/// <reference path="../../../typings.d.ts" />
+
 // ========================== [ meta ] ==========================
 export interface IEntity {
     _id: string;
@@ -32,6 +34,7 @@ export interface IUser extends IEntity {
   name: string;
   forename: string;
   email: string;
+  telefon: string;
 }
 
 export interface IUserRepository extends IRepository<IUser> {

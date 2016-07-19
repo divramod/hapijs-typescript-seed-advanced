@@ -39,36 +39,50 @@ export default function(server: Hapi.Server) {
     config: taskController.updateTask()
   });
 
+  server.route({
+    method: 'POST',
+    path: '/api/tasks',
+    handler: undefined,
+    config: taskController.createTask()
+  });
+
   // ========================== [ user ] ==========================
-  
+
   const userController = new UserController(server, new UserRepository());
-  
+
   server.route({
     method: 'GET',
     path: '/api/users/{id}',
     handler: undefined,
     config: userController.getUserById()
   });
-  
+
   server.route({
     method: 'GET',
     path: '/api/users',
     handler: undefined,
     config: userController.getUsers()
   });
-  
+
   server.route({
     method: 'DELETE',
     path: '/api/users/{id}',
     handler: undefined,
     config: userController.deleteUser()
   });
-  
+
   server.route({
     method: 'PUT',
     path: '/api/users/{id}',
     handler: undefined,
     config: userController.updateUser()
+  });
+
+  server.route({
+    method: 'POST',
+    path: '/api/users',
+    handler: undefined,
+    config: userController.createUser()
   });
 
 }

@@ -53,9 +53,8 @@ gulp.task('compile', ['clean'], () => {
 // =========== [ TEST ] ===========
 gulp.task('test-watch', [], () => {
   process.on('SIGINT', function() {
-      console.log("Caught interrupt signal");
-      if (i_should_exit)
-          process.exit();
+    console.log("Caught interrupt signal");
+    process.exit();
   });
   runSequence('compile', 'test')
   gulp.watch([sourceFiles, testFiles, 'gulpfile.js'], function(e) {

@@ -13,11 +13,18 @@ describe("UserRepository", function() {
 
   it("Authenticate a User", function(done) {
     const userController = new UserController(server, new UserRepository());
-    userController.authenticate().then((user) => {
-      console.log(user);
+    const user = {
+        'username': 'divramod',
+        'name': 'Petermann',
+        'forename': 'Arvid',
+        'email': 'arvidpetermann@gmail.com',
+        'telefon': '017620158302'
+      }
+    userController.authenticate(user).then((user) => {
+      //console.log(user);
       done();
     }).catch((error) => {
-      console.log(error);
+      //console.log(error);
       done(error);
     });
   });
@@ -31,6 +38,7 @@ describe("UserRepository", function() {
       name: "teste",
       forename: "teste",
       email: "user",
+      telefon: "017625322",
       createdDate: undefined,
       updatedAt: undefined
     };

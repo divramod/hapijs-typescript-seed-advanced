@@ -28,8 +28,6 @@ export default class userController extends BaseController {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
         var newUser: IUser = request.payload;
-        console.log(newUser);
-
         this.userRepository.create(newUser).then((user) => {
           reply(user).code(201);
         }).catch((error) => {
