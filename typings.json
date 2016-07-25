@@ -1,0 +1,12 @@
+{
+  "globalDependencies": {
+    "boom": "registry:dt/boom#0.0.0+20160317120654",
+    "chai": "registry:dt/chai#3.4.0+20160317120654",
+    "es6-promise": "registry:dt/es6-promise#0.0.0+20160423074304",
+    "hapi": "registry:dt/hapi#13.0.0+20160423150146",
+    "joi": "registry:dt/joi#9.0.0+20160514175131",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "mongodb": "registry:dt/mongodb#2.1.0+20160512045721",
+    "node": "registry:dt/node#6.0.0+20160514165920"
+  }
+}
