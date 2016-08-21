@@ -71,8 +71,8 @@ gulp.task('test-watch', [], () => {
  * gulp.watch
  */
 gulp.task('test-change', [], () => {
-  var foo = shell.ShellString('hello world');
-  foo.toEnd('change.js');
+  //var foo = shell.ShellString('hello world');
+  //foo.toEnd('change.js');
 })
 
 /**
