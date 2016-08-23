@@ -6,7 +6,7 @@ let assert = chai.assert;
 import TaskRepository from "../../src/libs/repository/mongo/taskRepository";
 import {ITask} from "../../src/libs/repository/interfaces";
 
-describe("TaskRepository", function() {
+describe("REPOSITORY Task", function() {
   it("Create a task", function(done) {
     var repo = new TaskRepository();
 

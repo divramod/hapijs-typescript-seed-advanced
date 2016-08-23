@@ -79,6 +79,13 @@ export default function(server: Hapi.Server) {
   });
 
   server.route({
+    method: 'PUT',
+    path: '/api/users/{id}/{token}',
+    handler: undefined,
+    config: userController.activateUser()
+  });
+
+  server.route({
     method: 'POST',
     path: '/api/users',
     handler: undefined,

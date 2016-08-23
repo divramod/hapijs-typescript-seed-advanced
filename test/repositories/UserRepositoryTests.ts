@@ -9,7 +9,7 @@ import {IUser} from "../../src/libs/repository/interfaces";
 
 let assert = chai.assert;
 
-describe("UserRepository", function() {
+describe("REPOSITORY User", function() {
 
   it("Authenticate a User", function(done) {
     const userController = new UserController(server, new UserRepository());

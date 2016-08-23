@@ -1,5 +1,10 @@
 import * as Joi from "joi";
 
+export const activateUserModel = Joi.object().keys({
+  _id: Joi.string().required(),
+  token: Joi.string().required(),
+});
+
 export const createUserModel = Joi.object().keys({
   username: Joi.string().required(),
   name: Joi.string().required(),
