@@ -29,6 +29,19 @@ export interface ITaskRepository extends IRepository<ITask> {
 
 // ========================== [ user ] ==========================
 
+export interface IUserActivation {
+  _id: string;
+  token: string;
+}
+
+export interface IUserCreate {
+  username: string;
+  name: string;
+  forename: string;
+  email: string;
+  telefon: string;
+}
+
 export interface IUser extends IEntity {
   username: string;
   name: string;

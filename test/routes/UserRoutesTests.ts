@@ -5,14 +5,41 @@ let assert = chai.assert;
 import server from "../../src/server";
 import UserController from '../../src/controllers/userController';
 import UserRepository from '../../src/libs/repository/mongo/userRepository';
-import {IUser} from "../../src/libs/repository/interfaces";
+import {IUser, IUserActivation, IUserCreate} from "../../src/libs/repository/interfaces";
 
-describe("route user/create POST", function() {
+describe("ROUTE /api/user", function() {
 
   const userController = new UserController(server, new UserRepository());
 
-  it("should create a user", function(done) {
-    let user: IUser = {
+  // ========================== [ ACTIVATE ] ==========================
+  it("/activate: should activate a user", function() {
+    // TODO: create a user
+    // TODO: get user _id 
+    // TODO: get token
+    // TODO: delete the created User
+    let user: IUserActivation = {
+      '_id': '1234566737465',
+      'token': '123234523542345'
+    };
+
+    let url = '/api/users/' + user._id + '/' + user.token;
+    const request = {
+      method: 'PUT',
+      url: url,
+      payload: user
+    };
+
+    return server.inject(request).then((response) => {
+      let res = JSON.parse(response.payload);
+      assert.strictEqual(res.success, false, '/users/{id}/{token}')
+      chai.expect(res.success).to.deep.equal(false);
+      //chai.expect(res.success).to.deep.equal(true);
+    });
+  });
+
+  // ========================== [ CREATE ] ==========================
+  it("/create: should create a user", function() {
+    let user: IUserCreate = {
         'username': 'divramod',
         'name': 'Petermann',
         'forename': 'Arvid',
@@ -25,7 +52,7 @@ describe("route user/create POST", function() {
       payload: user
     };
 
-    server.inject(request).then((response) => {
+    return server.inject(request).then((response) => {
       let res = JSON.parse(response.payload);
 
       assert.strictEqual(user.email, res.email, 'email')
@@ -38,9 +65,6 @@ describe("route user/create POST", function() {
       assert.isDefined(res._id, '_id should be defined')
       assert.strictEqual(res._id.length, 36, 'lenght of id should be 36')
       assert.isDefined(res.createdDate, 'createdDate should be defined')
-      done();
-    }).catch((error) => {
-      console.log(error);
     });
 
   });

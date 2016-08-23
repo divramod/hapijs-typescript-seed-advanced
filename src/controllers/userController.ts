@@ -4,7 +4,7 @@ import * as Boom from "boom";
 import * as Joi from "joi";
 import BaseController from './baseController';
 import * as UserModel from '../models/userModel';
-import { IUser, IUserRepository } from '../libs/repository/interfaces'
+import { IUser, IUserActivation, IUserRepository } from '../libs/repository/interfaces'
 
 export default class userController extends BaseController {
   private userRepository: IUserRepository;
@@ -24,15 +24,55 @@ export default class userController extends BaseController {
     return p1;
   }
 
+  public activateUser(): Hapi.IRouteAdditionalConfigurationOptions {
+    return {
+      handler: (request: Hapi.Request, reply: Hapi.IReply) => {
+
+        // TODO: create token when creating user
+        // TODO: search for user with stated id and token
+        
+        var userActivation: IUserActivation = request.payload;
+        this.userRepository.find({_id: userActivation._id, token: userActivation.token}, 0, 0).then((users: Array<IUser>) => {
+          if (users.length > 0) {
+            reply({success: true});
+          } else {
+            reply({success: false});
+          }
+        }).catch((error) => {
+          reply(Boom.badImplementation(error));
+        });
+
+      },
+      tags: ['api', 'users'],
+      description: 'Activate a user.',
+      validate: {
+        payload: UserModel.activateUserModel
+      },
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            '201': {
+              'description': 'Activated User.',
+              'schema': UserModel.userModel
+            }
+          }
+        }
+      }
+    }
+  
+  }
+
   public createUser(): Hapi.IRouteAdditionalConfigurationOptions {
     return {
       handler: (request: Hapi.Request, reply: Hapi.IReply) => {
+
         var newUser: IUser = request.payload;
         this.userRepository.create(newUser).then((user) => {
           reply(user).code(201);
         }).catch((error) => {
           reply(Boom.badImplementation(error));
         });
+
       },
       tags: ['api', 'users'],
       description: 'Create a user.',
