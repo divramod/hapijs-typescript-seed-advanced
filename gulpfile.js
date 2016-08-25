@@ -7,7 +7,8 @@ let sourcemaps = require('gulp-sourcemaps')
 let tslint = require('gulp-tslint')
 let nodemon = require('gulp-nodemon')
 let watch = require('gulp-watch')
-var mocha = require('gulp-mocha')
+//var mocha = require('gulp-mocha')
+var lab = require('gulp-lab')
 var istanbul = require('gulp-istanbul')
 var runSequence = require('run-sequence');
 var server  = require( 'gulp-develop-server' );
@@ -80,7 +81,15 @@ gulp.task('test-change', [], () => {
  */
 gulp.task('test', [], () => {
   return gulp.src(['build/test/**/*.js'], { read: false })
-    .pipe(mocha({ reporter: 'list' }));
+    .pipe(lab([
+      '-v',
+      '-l',
+      '-C',
+      '-c',
+      '-r',
+      'console'
+    ]));
+    //.pipe(mocha({ reporter: 'list' }));
     //.once('error', () => {
       //process.exit(1);
     //});
