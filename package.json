@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "code": "^3.0.2",
     "gulp": "^3.9.0",
     "gulp-develop-server": "^0.5.2",
     "gulp-help": "^1.6.0",
