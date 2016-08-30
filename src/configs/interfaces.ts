@@ -4,4 +4,5 @@ export interface IRepositoryConfig {
 
 export interface IServerConfig {
     port: number;
+    env: string;
 }

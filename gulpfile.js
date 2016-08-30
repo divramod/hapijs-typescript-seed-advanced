@@ -20,6 +20,7 @@ let sourceFiles = 'src/**/*.ts'
 let testFiles = 'test/**/*.ts'
 let outDir = require('./tsconfig.json').compilerOptions.outDir
 let entryPoint = './build/src/server.js'
+
 /**
  * Remove build directory.
  */
@@ -82,17 +83,17 @@ gulp.task('test-change', [], () => {
 gulp.task('test', [], () => {
   return gulp.src(['build/test/**/*.js'], { read: false })
     .pipe(lab([
-      '-v',
-      '-l',
-      '-C',
-      '-c',
-      '-r',
-      'console'
+      '--verbose',
+      '--leaks',
+      '--colors',
+      '--coverage',
+      '--reporter',
+      'console',
+      '--sourcemaps',
+      '--coverage-path',
+      'build/src',
+      '--silence'
     ]));
-    //.pipe(mocha({ reporter: 'list' }));
-    //.once('error', () => {
-      //process.exit(1);
-    //});
 })
 
 gulp.task('nodemon', ['compile'], () => {
