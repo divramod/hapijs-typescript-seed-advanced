@@ -32,6 +32,12 @@ npm run tslint
 ```
 
 # Testing
+
+## TODO's
+- [ ] is it possible/sensible to test an interface?
+
+
+## Links
 Uses the (chai-assert testing library)[http://chaijs.com/api/assert/].
 
 ## Route Testing
