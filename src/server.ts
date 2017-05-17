@@ -14,19 +14,23 @@ const pluginsPath = __dirname + '/libs/plugins/';
 const plugins = fs.readdirSync(pluginsPath).filter(file => fs.statSync(path.join(pluginsPath, file)).isDirectory());
 
 plugins.forEach((pluginName: string) => {
-    let plugin: IPlugin = (require("./libs/plugins/" + pluginName)).default();
-    if (Configurations.Server.env !== 'testing') {
-      console.log(`Register Plugin ${plugin.info().name} v${plugin.info().version}`);
-    }
-    plugin.register(server);
+  let plugin: IPlugin = (require("./libs/plugins/" + pluginName)).default();
+  /* $lab:coverage:off$ */
+  if (Configurations.Server.env !== 'testing') {
+    console.log(`Register Plugin ${plugin.info().name} v${plugin.info().version}`);
+  }
+  /* $lab:coverage:on$ */
+  plugin.register(server);
 });
 
 //Register Routes
 Routes(server);
 
 server.start(function() {
+  /* $lab:coverage:off$ */
   if (Configurations.Server.env !== 'testing')
     console.log('Server running at:', server.info.uri);
+  /* $lab:coverage:on$ */
 });
 
 export default server;

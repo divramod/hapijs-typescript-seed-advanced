@@ -36,14 +36,26 @@ npm run tslint
 ## TODO's
 - [ ] is it possible/sensible to test an interface?
 
+## Code Coverage
+To exclude lines from code coverage you can use:
+```
+  /* $lab:coverage:off$ */
+  /* $lab:coverage:on$ */
+```
 
 ## Links
 Uses the (chai-assert testing library)[http://chaijs.com/api/assert/].
 
-## Route Testing
-Is inspired by the method https://github.com/hapijs/discuss/issues/214 describes.
+## Testtypes
+I decided to not
+- test Controllers on their own, because they are tested while testing the routes
 
-## Database/Repository Testing
+### Route Testing
+Is inspired by the methods described here:
+- https://github.com/hapijs/discuss/issues/214 describes.
+- https://medium.com/@sigkell/testing-hapi-services-with-lab-96ac463c490a
+
+### Database/Repository Testing
 When you start ```npm test``` with the environment variable ```db=testing``` the test server will create a mongodb with location testingdb.
 
 # Documentation

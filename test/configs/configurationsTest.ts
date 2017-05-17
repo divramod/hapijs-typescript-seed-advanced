@@ -6,6 +6,7 @@ const expect = Code.expect;
 
 import Configurations from './../../src/configs/configurations';
 
+
 lab.experiment('configs/configExampleTest.ts', () => {
 
   lab.it('process.env.db = "testing"', (done) => {
